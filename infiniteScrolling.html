@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Scrolling</title>
+    <style>
+        body{
+            width: 60%;
+            margin: auto;
+            padding: 50px;
+            border: 10px solid darkred;
+        }
+        ul{
+            height: 500px;
+            overflow: auto;
+        }
+        li{
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="scroll">
+    </ul>
+    <script>
+        var count = 0;
+        var ul = document.querySelector('#scroll');
+        ul.addEventListener('scroll', ()=> {
+            if (ul.scrollTop + ul.clientHeight >= ul.scrollHeight){
+                scrollMore();
+            }            
+        })
+        function scrollMore() {
+            for(i=0; i<25; i++){
+                count++;
+                var li = document.createElement('li');
+                li.innerHTML = `Masai Student ` + count;
+                ul.appendChild(li)
+            }
+        }
+        scrollMore();
+    </script>
+</body>
+</html>
